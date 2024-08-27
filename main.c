@@ -4,8 +4,7 @@
 #include <lib65816/cpu.h>
 #include <lib65816/cpuevent.h>
 
-#include "cpu.h"
-#include "cpuevent.h"
+#include "mem.h"
 
 int trace;
 int no_io;
