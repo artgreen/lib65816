@@ -1,6 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <lib65816/cpu.h>
+#include <lib65816/cpuevent.h>
+
 #include "cpu.h"
 #include "cpuevent.h"
 
