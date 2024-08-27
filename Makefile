@@ -1,8 +1,37 @@
-# not the most sophisticated Makefile
 
-# add -DWORDS_BIGENDIAN if necessary
-CC = gcc -g
-#CC = vc +i386-linux
+# Compiler
+CC = gcc
 
-all:
-	$(CC) -Ilib65816 -I. main.c src/*.c -o emu65816
+# Compiler flags
+CFLAGS = -Wall -g
+
+# Source files
+SRCS = main.c
+
+# Object files
+OBJS = $(SRCS:.c=.o)
+
+# Library path
+LIB_PATH = ./build
+
+# Library name
+LIB_NAME = lib65816.a
+
+# Include directories
+INCLUDES = -Ilib65816 -I.
+
+# Output executable
+TARGET = emu65816
+
+# Link the object files and library to create the executable
+all: $(OBJS)
+	$(CC) $(CFLAGS) -o $(TARGET) $(OBJS) $(LIB_PATH)/$(LIB_NAME)
+
+# Compile source files into object files
+%.o: %.c
+	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+
+# Clean up build files
+.PHONY: clean
+clean:
+	rm -f $(OBJS) $(TARGET)
