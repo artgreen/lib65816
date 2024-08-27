@@ -23,7 +23,7 @@ set(lib65816_srcs
 	src/opcodes5.c
 	src/table.c
 )
-add_library(lib65816so SHARED ${lib65816_srcs})
+add_library(lib65816so SHARED ${lib65816_srcs} main.c)
 set_target_properties(lib65816so PROPERTIES OUTPUT_NAME 65816)
 target_include_directories(lib65816so PUBLIC
 	${CMAKE_CURRENT_BINARY_DIR}	# for the lib65816/config.h header
