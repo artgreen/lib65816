@@ -22,6 +22,8 @@ set(lib65816_srcs
 	src/opcodes4.c
 	src/opcodes5.c
 	src/table.c
+		mem.h
+		mem.c
 )
 add_library(lib65816so SHARED ${lib65816_srcs} main.c)
 set_target_properties(lib65816so PROPERTIES OUTPUT_NAME 65816)
