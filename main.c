@@ -11,7 +11,7 @@ int trace;
 int no_io;
 
 #define CODE_START 0x200
-#define MEM_MAX 1048576
+#define MEM_MAX ((4*1024*1024)-1)
 
 byte addressSpace[MEM_MAX];
 
@@ -44,8 +44,10 @@ byte MEM_readMem( word32 address,word32 timestamp, word32 emulFlags )
 
   address &= 0xFFFFFF;
 
-  if( address > 0x3FFFFF )
-    return 0;
+    if (address > MEM_MAX)
+    {
+        return 0;
+    }
 
   if( address == 0x000001 && !no_io)    return BlockingRead();
 
