@@ -8,11 +8,6 @@ byte BlockingRead(void)
     return (byte)(getchar());
 }
 
-byte NonBlockingRead(void)
-{
-    return 0x00;
-}
-
 void Emit(byte b)
 {
     putchar((int)b);
