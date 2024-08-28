@@ -19,6 +19,10 @@ void Emit(byte b)
     fflush(stdout);
 }
 
+byte *MEM_base(void)
+{
+    return &addressSpace[0];
+}
 byte MEM_readMem(word32 address, word32 timestamp, word32 emulFlags)
 {
     address &= 0xFFFFFF;

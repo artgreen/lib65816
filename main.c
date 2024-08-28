@@ -20,23 +20,27 @@ void EMUL_hardwareUpdate(word32 timestamp)
 
 int load_program(const char *filename, const word32 code_start)
 {
+    byte *mem_base = MEM_base();
+
     FILE* f = fopen(filename, "r");
     if (!f)
     {
         fprintf(stderr, "Could not open <%s>\n", filename);
         return 0;
     }
-    fread(&addressSpace[code_start], sizeof(addressSpace), 1, f);
+    fread(mem_base+code_start, MEM_MAX, 1, f);
     fclose(f);
     return 1;
 }
 
 void run(void)
 {
+    byte *mem_base = MEM_base();;
+
     no_io = 0;
     CPU_reset();
-    addressSpace[0xfffc] = CODE_START & 0xFF;
-    addressSpace[0xfffd] = (CODE_START >> 8) & 0xFF;
+    mem_base[0xfffc] = CODE_START & 0xFF;
+    mem_base[0xfffd] = (CODE_START >> 8) & 0xFF;
     CPU_run();
 }
 
