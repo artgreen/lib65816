@@ -44,6 +44,18 @@ byte BlockingRead(void)
     return (byte)(getchar());
 }
 
+/**
+ * @brief Writes a byte to the standard output.
+ *
+ * This function writes a byte to the standard output. It takes a byte as
+ * input and prints it to the standard output using the putchar function. The
+ * function then immediately flushes the standard output using fflush.
+ *
+ * @param b The byte to be written to the standard output.
+ *
+ * @see putchar
+ * @see fflush
+ */
 void Emit(byte b)
 {
     putchar((int)b);
